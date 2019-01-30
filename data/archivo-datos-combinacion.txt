@@ -1,0 +1,7 @@
+Ana;Diaz;25
+Jose;Suarez;20
+María;Villareal;30
+Luis;Alvarez;17
+Monica;Cuenca;9
+Byron;Sisalima;5
+Ariana;Valenzuela;10
