@@ -1,10 +1,10 @@
 # Importamos las clases necesarios
 from archivo.miArchivo import *
 from modelo.miModelo import *
-from data import *
+
 
 # Instanciamos los objetos de las clases que vamos a necesitar
-archivo = MiArchivo(nombre="archivo-datos-combinacion.txt")
+archivo = MiArchivo(nombre="data/archivo-datos-combinacion.txt")
 operaciones = Operaciones()
 
 # Obtenemos una lista con cada linea del archivo
@@ -13,20 +13,24 @@ lista = archivo.obtener_informacion()
 # Creamos una nueva lista para guardar las Personas
 listaPersonas = []
 
-# Recorremos la lista y creamos los objetos Persona
-for i in lista:
-    lista[i].split(";")
+lista = [linea.split(";") for linea in lista]	 # Dividimos cada linea en otra lista
 
-    for elemento in lista[i]:
-        persona = Persona(elemento[0], elemento[1], elemento[2])
-        listaPersonas.append(persona)
+# Recorremos la lista y creamos los objetos Persona
+for elemento in lista:
+
+    persona = Persona(elemento[0], elemento[1], elemento[2])
+    listaPersonas.append(persona)
 
 
 # Creamos una lista para extraer las edades de las personas
 listaEdades = []
 for persona in listaPersonas:
+    print(persona)
     listaEdades.append(persona.getEdad())
 
 
 # Obtenemos la lista de edades ordenada
 listaEdadesOrdenada = operaciones.merge_sort(listaEdades)
+
+# Imprimimos la lista ordenada
+print("\nLa lista de edades ordenada es: ",listaEdadesOrdenada)
